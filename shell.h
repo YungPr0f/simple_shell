@@ -51,5 +51,12 @@ int check_syntax(char *buffer);
 int builtins(char **input, char **env);
 void print_help(char **input);
 
+/* strings-1.c */
+int str_len(char *s);
+char *str_cpy(char *dest, char *src);
+char *str_dup(char *str);
+char *str_cat(char *dest, char *src);
+char *str_con(char *s1, char *s2);
+
 
 #endif /* SHELL_H */
