@@ -44,5 +44,12 @@ char *clean_spaces(char *buffer);
 char **create_argv(char *input_buffer, list_t **path);
 void free_argv(char **argv);
 
+/* built-ins.c */
+char *clean_comments(char *buffer);
+int check_builtin(char *command);
+int check_syntax(char *buffer);
+int builtins(char **input, char **env);
+void print_help(char **input);
+
 
 #endif /* SHELL_H */
