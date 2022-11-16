@@ -30,4 +30,10 @@ int execute_command(char *new_buffer, list_t *path, char **env,
 			int final, char *program_name);
 int execute_fork(char **input, char *program_name);
 
+/* env-list.c */
+list_t *list_path(char **env);
+list_t *create_list(char **environ);
+list_t *add_list(list_t **head, char *dir);
+void free_list(list_t *head);
+
 #endif /* SHELL_H */
