@@ -64,4 +64,8 @@ int str_twins(char *s1, char *s2);
 int str_count(char *buffer, char c);
 char *str_tr(char *buffer, char old_char, char new_char);
 
+/* errors.c */
+void ctrl_c(__attribute__((unused)) int x);
+void print_error(char *program_name, char *input, int error_num);
+
 #endif /* SHELL_H */
