@@ -58,5 +58,10 @@ char *str_dup(char *str);
 char *str_cat(char *dest, char *src);
 char *str_con(char *s1, char *s2);
 
+/* strings-2.c */
+int not_empty(char *input_buffer);
+int str_twins(char *s1, char *s2);
+int str_count(char *buffer, char c);
+char *str_tr(char *buffer, char old_char, char new_char);
 
 #endif /* SHELL_H */
