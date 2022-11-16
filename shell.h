@@ -12,4 +12,15 @@
 #include <errno.h>
 #include <signal.h>
 
+/**
+ * struct list - path directory list structure.
+ * @dir: directory path.
+ * @next: pointer to next directory node.
+ */
+typedef struct list
+{
+	char *dir;
+	struct list *next;
+} list_t;
+
 #endif /* SHELL_H */
