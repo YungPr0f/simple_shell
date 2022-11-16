@@ -36,4 +36,13 @@ list_t *create_list(char **environ);
 list_t *add_list(list_t **head, char *dir);
 void free_list(list_t *head);
 
+/* dmemory.c */
+char *get_path(char *buffer, list_t **path);
+char *aux_get_path(list_t *list_pointer,
+	char *slash_command, char *slash_input, char *input);
+char *clean_spaces(char *buffer);
+char **create_argv(char *input_buffer, list_t **path);
+void free_argv(char **argv);
+
+
 #endif /* SHELL_H */
