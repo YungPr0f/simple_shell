@@ -68,4 +68,4 @@ char *str_tr(char *buffer, char old_char, char new_char);
 void ctrl_c(__attribute__((unused)) int x);
 void print_error(char *program_name, char *input, int error_num);
 
-#endif /* SHELL_H */
+#endif
