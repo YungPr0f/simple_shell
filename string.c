@@ -1,110 +1,75 @@
-#include "main.h"
+#include "shell.h"
 
 /**
- * _strcmp - compare two stings
- * @str1: First string
- * @str2: Second string
+ * _strlen - returns the length of a string
+ * @s: the string whose length to check
  *
- * Description: Simple string comparison
- * Return: 1 for true and 0 for false.
+ * Return: integer length of string
  */
-int _strcmp(char *str1, char *str2)
-{
-	int sl1 = 0, sl2 = 0;
-
-	while (str1[sl1])
-		sl1++;
-
-	while (str2[sl2])
-		sl2++;
-
-	if (sl1 != sl2)
-		return (0);
-
-	sl1 = 0;
-	while (str1[sl1] == str2[sl1] && str1[sl1])
-		sl1++;
-
-	if (sl1 == sl2)
-		return (1);
-
-	return (0);
-}
-
-/**
- * _strcpy - copies one string into another
- * @str1: First string, copied into
- * @str2: Second string, copied from
- * @s: Integer size of first strings memory in bytes.
- *
- * Description: People copy string with equals. C is ridiculous
- * Return: 1 if the copy succeeded or 0 if it failed.
- */
-int _strcpy(char **str1, char *str2, unsigned int s)
-{
-	unsigned int i = 0, j = 0;
-
-	while (str2[j])
-		j++;
-
-	if (j > s)
-		*str1 = malloc(sizeof(char) * j);
-
-	while (str2[i])
-	{
-		(*str1)[i] = str2[i];
-		i++;
-	}
-	(*str1)[i] = '\0';
-
-	return (_strcmp((*str1), str2));
-}
-
-/**
- * _strcln - Removes terminating newline characters
- * @str: Pointer to string to be cleaned
- *
- * Description: Removes the \n at the end of getline results
- * Return: The string less the newline character.
- */
-void _strcln(char **str)
+int _strlen(char *s)
 {
 	int i = 0;
-	char *str_c = *str;
 
-	while (str_c[i] != '\n')
-	i++;
+	if (!s)
+		return (0);
 
-	str_c[i] = '\0';
+	while (*s++)
+		i++;
+	return (i);
 }
+
 /**
- * to_exe - Converts a command to executable
- * @cmd: String command to be parsed
+ * _strcmp - performs lexicogarphic comparison of two strangs.
+ * @s1: the first strang
+ * @s2: the second strang
  *
- * Description: Retrieves the last part of a executable address and returns it.
- * Return: String name of executable.
+ * Return: negative if s1 < s2, positive if s1 > s2, zero if s1 == s2
  */
-char *to_exe(char *cmd)
+int _strcmp(char *s1, char *s2)
 {
-	char *c, *d;
-
-	if (cmd[0] != '/')
+	while (*s1 && *s2)
 	{
-		cmd = strtok(cmd, " ");
-		return (cmd);
+		if (*s1 != *s2)
+			return (*s1 - *s2);
+		s1++;
+		s2++;
 	}
+	if (*s1 == *s2)
+		return (0);
 	else
-	{
-		c = strtok(cmd, "/");
-
-		while (c != NULL)
-		{
-			d = c;
-			c = strtok(NULL, "/");
-		}
-	}
-	d = strtok(d, " ");
-
-	return (d);
+		return (*s1 < *s2 ? -1 : 1);
 }
 
+/**
+ * starts_with - checks if needle starts with haystack
+ * @haystack: string to search
+ * @needle: the substring to find
+ *
+ * Return: address of next char of haystack or NULL
+ */
+char *starts_with(const char *haystack, const char *needle)
+{
+	while (*needle)
+		if (*needle++ != *haystack++)
+			return (NULL);
+	return ((char *)haystack);
+}
+
+/**
+ * _strcat - concatenates two strings
+ * @dest: the destination buffer
+ * @src: the source buffer
+ *
+ * Return: pointer to destination buffer
+ */
+char *_strcat(char *dest, char *src)
+{
+	char *ret = dest;
+
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = *src;
+	return (ret);
+}
